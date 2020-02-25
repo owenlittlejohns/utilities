@@ -89,7 +89,8 @@ set scrolloff=2
 " press return to temporarily get out of the highlighted search.
 "nnoremap <CR> :nohlsearch<CR><CR>
 
-" Press Space to turn off highlighting and clear any message already displayed.
+" Press Space to turn off highlighting and clear any message already
+" displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 
@@ -126,15 +127,15 @@ set shiftwidth=4
 " tab key will go to next level of indentation
 set smarttab
 
-" When opening a new line and no filetype-specific indenting is enabled, keep
-" the same indent as the line you're currently on.
+" When opening a new line and no filetype-specific indenting is enabled,
+" keep the same indent as the line you're currently on.
 set autoindent
 
 " if using actual tab character in source code, probably also want: 
 " - these are actually the defaults, but may want to set them defensively 
 "   set softtabstop=0 noexpandtab
 
-" Uncomment the following to have Vim jump to the last position when                          
+" Uncomment the following to have Vim jump to the last position when        
 " reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
@@ -149,12 +150,13 @@ autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
 " Disable bell:
 set visualbell
 set t_vb=
+
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
 " Shorthand notation; fetches
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
+  \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 
 " Initialize plug system
@@ -170,8 +172,8 @@ let &t_Co=256
 " vim-ale settings:
 let g:ale_sign_column_always = 1
 let g:ale_linters={
-  \ 'java': [],
-  \ 'javascript': ['eslint']}
+			\ 'java': [],
+			\ 'javascript': ['eslint']}
 let g:ale_fixers = {
   \ 'javascript': ['eslint', 'prettier'],
   \ 'css': ['prettier'],

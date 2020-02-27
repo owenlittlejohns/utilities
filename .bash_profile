@@ -1,6 +1,13 @@
 	
 alias pivssh='ssh -A -o PKCS11Provider=/usr/lib/ssh-keychain.dylib'
 
+# Empty path before path_helper runs, so TMUX doesn't alter order
+# https://superuser.com/questions/544989/does-tmux-sort-the-path-variable
+if [ -f /etc/profile ]; then
+    PATH=""
+    source /etc/profile
+fi
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 

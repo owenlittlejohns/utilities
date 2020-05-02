@@ -1,9 +1,15 @@
 " Owen Littlejohns, edited from Kristin Rutkowski
-" 20181011
+" 2020-05-01
 " .vimrc
 " adapted from: 
 "   vim.wikia.com/wiki/Example_vimrc
 "   https://github.com/Areustle/dotfiles/blob/master/vim/.vimrc
+" Packages in .vim/bundle:
+" ale, vim-prettier, vim-tsx
+" Packages in .vim/autoload:
+" pathogen.vim, plug.vim
+" Packages in .vim/plugged:
+" vim-prettier
 
 set nocompatible
 
@@ -172,8 +178,9 @@ let &t_Co=256
 " vim-ale settings:
 let g:ale_sign_column_always = 1
 let g:ale_linters={
-			\ 'java': [],
-			\ 'javascript': ['eslint']}
+  \ 'java': [],
+  \ 'javascript': ['eslint'],
+  \ 'typescript': ['tsserver', 'tslint']}
 let g:ale_fixers = {
   \ 'javascript': ['eslint', 'prettier'],
   \ 'css': ['prettier'],

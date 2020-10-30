@@ -184,7 +184,8 @@ let g:ale_linters={
 let g:ale_fixers = {
   \ 'javascript': ['eslint', 'prettier'],
   \ 'css': ['prettier'],
-  \ 'typescript': ['prettier']}
+  \ 'typescript': ['prettier'],
+  \ 'python': ['remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_typescript_prettier_use_local_config = 1

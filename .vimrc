@@ -1,15 +1,9 @@
 " Owen Littlejohns, edited from Kristin Rutkowski
-" 2020-05-01
+" 2025-10-06
 " .vimrc
 " adapted from: 
 "   vim.wikia.com/wiki/Example_vimrc
 "   https://github.com/Areustle/dotfiles/blob/master/vim/.vimrc
-" Packages in .vim/bundle:
-" ale, vim-prettier, vim-tsx
-" Packages in .vim/autoload:
-" pathogen.vim, plug.vim
-" Packages in .vim/plugged:
-" vim-prettier
 
 set nocompatible
 
@@ -23,6 +17,9 @@ filetype indent plugin on
 
 " display syntax highlighting
 syntax on
+
+" Use new regular expression engine
+set re=0
 
 " Enable use of the mouse for all modes
 set mouse=a
@@ -150,12 +147,23 @@ endif
 
 " Set indent to two spaces for pug and Javascript files:
 autocmd FileType pug setlocal shiftwidth=2 tabstop=2 smarttab
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
+autocmd Filetype json setlocal tabstop=2 shiftwidth=2 expandtab
+
+" Try to ensure Python sets indentation to a single extra shiftwidth on return
+let g:pyindent_open_paren = '&sw'
+let g:pyindent_nested_paren = '&sw'
+let g:pyindent_continue='&sw'
 
 " Disable bell:
 set visualbell
 set t_vb=
+
+" Ensure spelling mistakes are highlighted:
+set spell spelllang=en_gb
+set spell spellfile=~/.vim/spell/jargon.utf-8.add
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -170,7 +178,7 @@ call plug#end()
 
 execute pathogen#infect()
 syntax on
-filetype plugin indent on
+" filetype plugin indent on
 
 " Support 256-terminal colours:
 let &t_Co=256
@@ -178,9 +186,9 @@ let &t_Co=256
 " vim-ale settings:
 let g:ale_sign_column_always = 1
 let g:ale_linters={
-  \ 'java': [],
-  \ 'javascript': ['eslint'],
-  \ 'typescript': ['tsserver', 'tslint']}
+			\ 'java': [],
+			\ 'javascript': ['eslint'],
+			\ 'typescript': ['tsserver', 'tslint']}
 let g:ale_fixers = {
   \ 'javascript': ['eslint', 'prettier'],
   \ 'css': ['prettier'],
